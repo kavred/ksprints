@@ -138,7 +138,11 @@ a {
     will-change: transform;
 }
 
-/* Standard Layer - allow click-through for 3D depth interaction */
+/* ========================================
+   3D SCROLL - POINTER EVENTS ARCHITECTURE
+   ======================================== */
+
+/* Base: All layers are non-interactive by default */
 .layer {
     position: absolute;
     width: 100%;
@@ -149,10 +153,25 @@ a {
     justify-content: center;
     align-items: center;
     pointer-events: none;
-    /* Let clicks pass through empty space */
 }
 
-/* Layer Content Styling */
+/* Active layer: ALL children are interactive */
+.layer.layer-active {
+    pointer-events: auto;
+}
+
+/* Inactive layers: completely non-interactive */
+.layer.layer-inactive {
+    pointer-events: none;
+}
+
+/* Passed layers: hidden from view and interaction */
+.layer.layer-passed {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Layer Content Styling - inherits pointer-events from parent */
 .layer-content {
     width: 100%;
     max-width: 1400px;
@@ -160,21 +179,11 @@ a {
     padding: 0 2rem;
     display: flex;
     position: relative;
-    /* Ensure content is centered vertically */
     flex-direction: column;
     justify-content: center;
-    pointer-events: none;
-    /* Let clicks pass through empty space */
+    /* NO pointer-events rule - inherits from .layer */
 }
 
-/* Re-enable pointer events for actual content */
-.hero-text,
-.scrolldown,
-.text-block,
-.visual-block,
-.center-content {
-    pointer-events: auto;
-}
 
 /* Hero Section */
 .hero-content {
@@ -580,20 +589,13 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.layer.passed {
-    pointer-events: none;
-    visibility: hidden;
-}
+/* Legacy .passed class removed - now using .layer-passed */
 
-/* Clickability Deep Fix */
-/* Ensure the button itself is clickable even if parent has pointer-events: none via inheritance chains */
+/* Buttons inherit pointer-events from layer state */
 .btn,
-a.btn,
-button {
-    pointer-events: auto !important;
+a.btn {
     position: relative;
     z-index: 10;
-    /* Boost z-index to be sure */
 }
 
 /* -------------------------------------------------------------------------- */

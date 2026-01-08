@@ -71,65 +71,142 @@ if (hamburger && mobileOverlay) {
 function init3DScroll() {
     const layers = document.querySelectorAll('.layer');
     const scrollTrack = document.querySelector('.scroll-track');
+    const world = document.getElementById('world');
+    const viewport = document.querySelector('.viewport');
     const depth = 1000; // Distance between layers
-    const layerCount = layers.length;
 
-    // Position layers initially
+    let currentActiveIndex = 0;
+
+    // Position layers initially at their z-depths
     layers.forEach((layer, index) => {
-        const initialZ = -1 * index * depth;
+        const initialZ = -index * depth;
         layer.style.transform = `translateZ(${initialZ}px)`;
-        layer.dataset.initialZ = initialZ;
+        layer.dataset.index = index;
     });
 
-    // Set scroll track height
+    // Set scroll track height for the scroll range
     const totalDepth = (layers.length - 1) * depth;
     scrollTrack.style.height = `${totalDepth + window.innerHeight}px`;
 
-    // Initial Position
+    // =========================================================================
+    // CLICK INTERCEPTION SYSTEM
+    // Since CSS 3D transforms cause hit-area misalignment, we intercept clicks
+    // on the viewport and manually check if they land on visible buttons
+    // =========================================================================
+
+    viewport.addEventListener('click', (e) => {
+        const clickX = e.clientX;
+        const clickY = e.clientY;
+
+        // Check ALL visible layers, not just the active one
+        // This allows clicking buttons that are visible but not yet "active"
+        for (const layer of layers) {
+            // Skip passed layers (they're faded out)
+            if (layer.classList.contains('layer-passed')) continue;
+
+            // Check if layer is visible (opacity > 0.3)
+            const layerOpacity = parseFloat(window.getComputedStyle(layer).opacity);
+            if (layerOpacity < 0.3) continue;
+
+            // Find all clickable links in this layer
+            const links = layer.querySelectorAll('a.btn, .btn-primary, .btn-outline');
+
+            for (const link of links) {
+                // Get the visual bounding box (this accounts for 3D transforms)
+                const rect = link.getBoundingClientRect();
+
+                // Skip if button has no visible size
+                if (rect.width === 0 || rect.height === 0) continue;
+
+                // Check if click is within the visual bounds
+                if (clickX >= rect.left && clickX <= rect.right &&
+                    clickY >= rect.top && clickY <= rect.bottom) {
+                    // Found a matching link - navigate to it
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // Get the href and navigate
+                    const href = link.getAttribute('href');
+                    if (href) {
+                        window.location.href = href;
+                    }
+                    return;
+                }
+            }
+        }
+    }, true); // Use capture phase to intercept before other handlers
+
     function updateScroll() {
         const scrollTop = window.scrollY;
 
-        // Move World
-        const world = document.getElementById('world');
+        // Move the world forward based on scroll
         if (world) {
             world.style.transform = `translateZ(${scrollTop}px)`;
         }
 
-        // Vaporize Effect
-        layers.forEach((layer, index) => {
-            const layerZ = index * -depth; // Layer's original Z
-            const currentZ = layerZ + scrollTop; // Position relative to camera (0)
+        // Determine which layer has "focus" based on which layer content is most visible
+        // A layer becomes active when its content is prominently visible
+        // The key insight: layer N content is at z = -N * depth
+        // It becomes most visible when scrollTop brings it close to z=0
+        // Active threshold: when the layer is within viewing range (before it passes)
 
+        // Find the layer that is currently in the "sweet spot" for viewing/interaction
+        let activeIndex = 0;
+        layers.forEach((layer, index) => {
+            const layerZ = -index * depth;
+            const currentZ = layerZ + scrollTop; // Position relative to camera
+
+            // Layer is in "active zone" when it's between -200 and +300 from camera
+            // This gives users time to click before and as content approaches
+            if (currentZ >= -200 && currentZ < 300) {
+                activeIndex = index;
+            }
+        });
+
+        // Update the tracked active index for click handling
+        currentActiveIndex = activeIndex;
+
+        layers.forEach((layer, index) => {
+            const layerZ = -index * depth;
+            const currentZ = layerZ + scrollTop;
+
+            // Calculate visual effects (fade and blur as layer passes)
             let opacity = 1;
             let blur = 0;
             const fadeStart = 100;
             const fadeEnd = 600;
 
             if (currentZ > fadeStart) {
-                // Approaching eye
                 const progress = (currentZ - fadeStart) / (fadeEnd - fadeStart);
-                opacity = 1 - Math.max(0, Math.min(1, progress));
-                blur = Math.max(0, Math.min(1, progress)) * 20;
-            }
-
-            if (opacity < 0.5) {
-                layer.classList.add('passed'); // CSS handles pointer-events: none
-                layer.classList.remove('active-layer');
-            } else {
-                layer.classList.remove('passed');
-                layer.classList.add('active-layer');
+                opacity = 1 - Math.min(1, Math.max(0, progress));
+                blur = Math.min(1, Math.max(0, progress)) * 20;
             }
 
             layer.style.opacity = opacity;
             layer.style.filter = `blur(${blur}px)`;
+
+            // Apply layer states
+            const isPassed = currentZ > fadeEnd;
+            const isActive = index === activeIndex && !isPassed;
+
+            // Remove all state classes first
+            layer.classList.remove('layer-active', 'layer-inactive', 'layer-passed');
+
+            if (isPassed) {
+                layer.classList.add('layer-passed');
+            } else if (isActive) {
+                layer.classList.add('layer-active');
+            } else {
+                layer.classList.add('layer-inactive');
+            }
         });
 
         requestAnimationFrame(updateScroll);
     }
 
     updateScroll();
-    window.addEventListener('scroll', updateScroll);
 }
+
 
 /* -------------------------------------------------------------------------- */
 /*                            PRODUCT RENDER LOGIC                            */
