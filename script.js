@@ -1,6 +1,18 @@
 // KNR Prints - Global Logic
 
 /* -------------------------------------------------------------------------- */
+/*                            CLOUDINARY CONFIG                               */
+/* -------------------------------------------------------------------------- */
+const CLOUDINARY_CLOUD_NAME = 'YOUR_CLOUD_NAME_HERE'; // Replace with your actual Cloud Name
+
+function buildImageUrl(imageId) {
+    if (!imageId) return '';
+    if (imageId.startsWith('http')) return imageId; // Allow absolute URLs as fallback
+    // q_auto and f_auto optimize quality and format automatically
+    return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/q_auto,f_auto/${imageId}`;
+}
+
+/* -------------------------------------------------------------------------- */
 /*                                PRODUCT DATA                                */
 /* -------------------------------------------------------------------------- */
 const products = []; // DEPRECATED: Using productDatabase for all source of truth now.
@@ -292,8 +304,9 @@ function renderProducts(filterMode = 'all') {
                 </div>`;
             }
 
-            let imageContent = product.imageUrl 
-                ? `<img src="${product.imageUrl}" alt="${product.title}" class="card-image-full" style="width:100%; height:100%; object-fit:cover;">`
+            let imgSrc = buildImageUrl(product.imageId);
+            let imageContent = imgSrc 
+                ? `<img src="${imgSrc}" alt="${product.title}" class="card-image-full" style="width:100%; height:100%; object-fit:cover;">`
                 : `<div class="card-image-placeholder"><span>${product.title}</span></div>`;
 
             card.innerHTML = `
@@ -337,7 +350,7 @@ const productDatabase = {
         series: 'Vase',
         tier: 'signature',
         colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333'],
-        imageUrl: '' // Add your external image URL here later
+        imageId: '' // Add your Cloudinary image Public ID here later (e.g., 'my-first-vase')
     },
 
     // STRUCTURAL SERIES (Signature)
@@ -572,8 +585,9 @@ function initProductPage() {
 
     // Image Handling
     const mainImg = document.getElementById('product-main-image');
-    if (product.imageUrl) {
-        mainImg.innerHTML = `<img src="${product.imageUrl}" alt="${product.title}" style="width:100%; height:100%; object-fit:cover; border-radius:4px;">`;
+    let imgSrc = buildImageUrl(product.imageId);
+    if (imgSrc) {
+        mainImg.innerHTML = `<img src="${imgSrc}" alt="${product.title}" style="width:100%; height:100%; object-fit:cover; border-radius:4px;">`;
         mainImg.style.background = 'none';
     } else {
         mainImg.innerText = product.title; // Placeholder text
