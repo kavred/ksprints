@@ -292,13 +292,14 @@ function renderProducts(filterMode = 'all') {
                 </div>`;
             }
 
+            let imageContent = product.imageUrl 
+                ? `<img src="${product.imageUrl}" alt="${product.title}" class="card-image-full" style="width:100%; height:100%; object-fit:cover;">`
+                : `<div class="card-image-placeholder"><span>${product.title}</span></div>`;
+
             card.innerHTML = `
                 <a href="${viewLink}" class="card-link-wrapper">
                     <div class="card-image-wrapper">
-                        <!-- Placeholder -->
-                        <div class="card-image-placeholder">
-                            <span>${product.title}</span>
-                        </div>
+                        ${imageContent}
                     </div>
                     <div class="card-content">
                         <div class="card-header">
@@ -328,70 +329,15 @@ function renderProducts(filterMode = 'all') {
 /* -------------------------------------------------------------------------- */
 
 const productDatabase = {
-    // KINETIC SERIES (Signature)
-    'k_turbine': {
-        title: 'Turbine Cross-Section',
+    // VASE SERIES (Signature)
+    'v_vase1': {
+        title: 'The Modernist Vase',
         price: '240.00',
-        desc: 'A detailed cutaway of a high-bypass turbofan engine, revealing the intricate blade geometry and compression stages.',
-        series: 'Kinetic',
+        desc: 'Elegant, minimalist structure. A placeholder for your first vase.',
+        series: 'Vase',
         tier: 'signature',
-        colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333']
-    },
-    'k_v12': {
-        title: 'V12 Piston Assembly',
-        price: '180.00',
-        desc: 'Exploded view of a performance engine cylinder block, showcasing the piston, connecting rod, and crankshaft relationship.',
-        series: 'Kinetic',
-        tier: 'signature',
-        colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333']
-    },
-    'k_diff': {
-        title: 'Differential Gear Set',
-        price: '160.00',
-        desc: 'Topological study of limited-slip differential gears. The mathematical beauty of torque distribution visualized.',
-        series: 'Kinetic',
-        tier: 'signature',
-        colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333']
-    },
-    'k_hydro': {
-        title: 'Hydraulic Actuator',
-        price: '210.00',
-        desc: 'Schematic of heavy machinery fluid dynamics. Power transfer through pressurized systems.',
-        series: 'Kinetic',
-        tier: 'signature',
-        colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333']
-    },
-    'k_pump': {
-        title: 'Centrifugal Pump',
-        price: '195.00',
-        desc: 'Flow analysis diagram of industrial pumping systems. The spiral volute geometry is a masterpiece of efficiency.',
-        series: 'Kinetic',
-        tier: 'signature',
-        colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333']
-    },
-    'k_cam': {
-        title: 'Camshaft Profile',
-        price: '155.00',
-        desc: 'Precision lift and duration geometry curves of a racing camshaft. Engineering at the micron level.',
-        series: 'Kinetic',
-        tier: 'signature',
-        colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333']
-    },
-    'k_rotor': {
-        title: 'Rotary Engine Rotor',
-        price: '225.00',
-        desc: 'Wankel engine combustion cycle visualization. The unique Reuleaux triangle in action.',
-        series: 'Kinetic',
-        tier: 'signature',
-        colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333']
-    },
-    'k_trans': {
-        title: 'Transmission Logic',
-        price: '280.00',
-        desc: 'Complex valve body pathways for automatic shifting. A labyrinth of fluid logic.',
-        series: 'Kinetic',
-        tier: 'signature',
-        colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333']
+        colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333'],
+        imageUrl: '' // Add your external image URL here later
     },
 
     // STRUCTURAL SERIES (Signature)
@@ -624,13 +570,18 @@ function initProductPage() {
     if (existingBadge) existingBadge.remove();
 
 
-    // Image Placeholder
+    // Image Handling
     const mainImg = document.getElementById('product-main-image');
-    mainImg.innerText = product.title; // Placeholder text
-    if (product.series === 'Kinetic') mainImg.style.background = 'radial-gradient(circle, #333, #000)';
-    if (product.series === 'Structural') mainImg.style.background = 'radial-gradient(circle, #2a2a2a, #111)';
-    if (product.series === 'Aerospace') mainImg.style.background = 'radial-gradient(circle, #1f1f1f, #050505)';
-    if (product.series === 'Essentials') mainImg.style.background = 'radial-gradient(circle, #444, #111)'; // Generic background for Essentials
+    if (product.imageUrl) {
+        mainImg.innerHTML = `<img src="${product.imageUrl}" alt="${product.title}" style="width:100%; height:100%; object-fit:cover; border-radius:4px;">`;
+        mainImg.style.background = 'none';
+    } else {
+        mainImg.innerText = product.title; // Placeholder text
+        if (product.series === 'Vase') mainImg.style.background = 'radial-gradient(circle, #333, #000)';
+        if (product.series === 'Structural') mainImg.style.background = 'radial-gradient(circle, #2a2a2a, #111)';
+        if (product.series === 'Aerospace') mainImg.style.background = 'radial-gradient(circle, #1f1f1f, #050505)';
+        if (product.series === 'Essentials') mainImg.style.background = 'radial-gradient(circle, #444, #111)'; // Generic background for Essentials
+    }
 
     // Colors
     const colorSelector = document.getElementById('color-selector');
