@@ -3,7 +3,7 @@
 /* -------------------------------------------------------------------------- */
 /*                            CLOUDINARY CONFIG                               */
 /* -------------------------------------------------------------------------- */
-const CLOUDINARY_CLOUD_NAME = 'YOUR_CLOUD_NAME_HERE'; // Replace with your actual Cloud Name
+const CLOUDINARY_CLOUD_NAME = 'dllc7sh8m'; // Replace with your actual Cloud Name
 
 function buildImageUrl(imageId) {
     if (!imageId) return '';
