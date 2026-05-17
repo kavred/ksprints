@@ -310,9 +310,9 @@ function renderProducts(filterMode = 'all') {
         } else {
             // SIGNATURE CARD
             let colorsHtml = '';
-            if (product.tier === 'essentials' && product.colors) {
+            if (product.tier === 'signature') {
                 colorsHtml = `<div class="card-colors">
-                    ${product.colors.map(c => `<span class="color-dot-small" style="background-color: ${c}"></span>`).join('')}
+                    ${GLOBAL_COLOR_PALETTE.map(c => `<span class="color-dot-small" style="background-color: ${c}"></span>`).join('')}
                 </div>`;
             }
 
@@ -349,6 +349,13 @@ function renderProducts(filterMode = 'all') {
 }
 
 /* -------------------------------------------------------------------------- */
+/*                             GLOBAL COLOR OPTIONS                           */
+/* -------------------------------------------------------------------------- */
+// Central location to define color options for ALL products.
+// Add or remove hex codes here to change available colors globally across the site.
+const GLOBAL_COLOR_PALETTE = ['#050505', '#ffffff', '#E11D48', '#4682B4', '#50c878', '#8B4513'];
+
+/* -------------------------------------------------------------------------- */
 /*                             DYNAMIC PRODUCT LOGIC                           */
 /* -------------------------------------------------------------------------- */
 
@@ -360,7 +367,6 @@ const productDatabase = {
         desc: 'Embrace the perfect harmony of Japanese minimalism and Scandinavian functionality with our stunning Japandi Vase. Designed for the modern home, this piece effortlessly introduces a "Luxurious Gallery" aesthetic to any room. With its elegant, sweeping curves and matte ribbed texture, this vase serves as a captivating standalone piece of art or a sophisticated vessel for dried florals, pampas grass, and botanical branches. Credit: @shacharbh_4653386 on Printables.',
         series: 'Vase',
         tier: 'signature',
-        colors: ['#FFA500', '#ADD8E6', '#FF0000'],
         imageId: 'Japandi Vase'
     },
 
@@ -370,64 +376,56 @@ const productDatabase = {
         price: '320.00',
         desc: 'Analysis of main cable connection points and tension limits on a mega-structure bridge.',
         series: 'Structural',
-        tier: 'signature',
-        colors: ['#8c8c8c', '#4682B4', '#8B4513', '#1a1a1a']
+        tier: 'signature'
     },
     's_beam': {
         title: 'I-Beam Stress Map',
         price: '190.00',
         desc: 'Load path visualization under maximum localized stress on a standard universal beam.',
         series: 'Structural',
-        tier: 'signature',
-        colors: ['#8c8c8c', '#4682B4', '#8B4513', '#1a1a1a']
+        tier: 'signature'
     },
     's_dome': {
         title: 'Geodesic Dome Joint',
         price: '210.00',
         desc: "Vertex connection detail for spherical structures. Buckminster Fuller's vision in print.",
         series: 'Structural',
-        tier: 'signature',
-        colors: ['#8c8c8c', '#4682B4', '#8B4513', '#1a1a1a']
+        tier: 'signature'
     },
     's_sky': {
         title: 'The Skyscraper Core',
         price: '280.00',
         desc: 'Cross-section of elevator shaft and wind bracing systems in a supertall building.',
         series: 'Structural',
-        tier: 'signature',
-        colors: ['#8c8c8c', '#4682B4', '#8B4513', '#1a1a1a']
+        tier: 'signature'
     },
     's_cant': {
         title: 'Cantilever Reinforcement',
         price: '175.00',
         desc: 'Rebar placement layout for extended concrete spans. The hidden strength within.',
         series: 'Structural',
-        tier: 'signature',
-        colors: ['#8c8c8c', '#4682B4', '#8B4513', '#1a1a1a']
+        tier: 'signature'
     },
     's_truss': {
         title: 'Steel Truss Geometry',
         price: '165.00',
         desc: 'Warren truss triangulation efficiency study. Classic structural engineering.',
         series: 'Structural',
-        tier: 'signature',
-        colors: ['#8c8c8c', '#4682B4', '#8B4513', '#1a1a1a']
+        tier: 'signature'
     },
     's_dam': {
         title: 'Buttress Dam Section',
         price: '240.00',
         desc: 'Hydrostatic pressure resistance engineering for massive water containment.',
         series: 'Structural',
-        tier: 'signature',
-        colors: ['#8c8c8c', '#4682B4', '#8B4513', '#1a1a1a']
+        tier: 'signature'
     },
     's_isolator': {
         title: 'Seismic Isolator',
         price: '295.00',
         desc: 'Base isolation bearing for earthquake resistance. Engineering for safety and motion.',
         series: 'Structural',
-        tier: 'signature',
-        colors: ['#8c8c8c', '#4682B4', '#8B4513', '#1a1a1a']
+        tier: 'signature'
     },
 
     // AEROSPACE SERIES (Signature)
@@ -436,64 +434,56 @@ const productDatabase = {
         price: '260.00',
         desc: 'Orbital insertion path mathematics and velocity charts for heavy lift vehicles.',
         series: 'Aerospace',
-        tier: 'signature',
-        colors: ['#ffffff', '#000080', '#FF4500', '#222222']
+        tier: 'signature'
     },
     'a_naca': {
         title: 'NACA 2412 Airfoil',
         price: '185.00',
         desc: 'Classic camber profiles emphasizing lift coefficients. The shape of flight.',
         series: 'Aerospace',
-        tier: 'signature',
-        colors: ['#ffffff', '#000080', '#FF4500', '#222222']
+        tier: 'signature'
     },
     'a_nozzle': {
         title: 'Rocket Nozzle Bell',
         price: '230.00',
         desc: 'De Laval nozzle expansion ratio blueprint. Optimizing thrust in vacuum.',
         series: 'Aerospace',
-        tier: 'signature',
-        colors: ['#ffffff', '#000080', '#FF4500', '#222222']
+        tier: 'signature'
     },
     'a_inlet': {
         title: 'SR-71 Inlet Spike',
         price: '310.00',
         desc: 'Supersonic shockwave management geometry. Mastering air at Mach 3.',
         series: 'Aerospace',
-        tier: 'signature',
-        colors: ['#ffffff', '#000080', '#FF4500', '#222222']
+        tier: 'signature'
     },
     'a_heli': {
         title: 'Helicopter Rotor Head',
         price: '275.00',
         desc: 'Cyclic and collective pitch mechanism details. Complexity in rotation.',
         series: 'Aerospace',
-        tier: 'signature',
-        colors: ['#ffffff', '#000080', '#FF4500', '#222222']
+        tier: 'signature'
     },
     'a_station': {
         title: 'Space Station Module',
         price: '350.00',
         desc: 'Pressure vessel and docking port schematic. Living in the void.',
         series: 'Aerospace',
-        tier: 'signature',
-        colors: ['#ffffff', '#000080', '#FF4500', '#222222']
+        tier: 'signature'
     },
     'a_solar': {
         title: 'Satellite Solar Array',
         price: '210.00',
         desc: 'Deployment hinge and photovoltaic cell layout. Harvesting stellar energy.',
         series: 'Aerospace',
-        tier: 'signature',
-        colors: ['#ffffff', '#000080', '#FF4500', '#222222']
+        tier: 'signature'
     },
     'a_lander': {
         title: 'Landing Hexapod',
         price: '295.00',
         desc: 'Lunar lander shock absorption leg design. Touching down on alien worlds.',
         series: 'Aerospace',
-        tier: 'signature',
-        colors: ['#ffffff', '#000080', '#FF4500', '#222222']
+        tier: 'signature'
     },
 
     // ESSENTIALS COLLECTION
@@ -503,64 +493,56 @@ const productDatabase = {
         price: '45.00',
         desc: 'A minimal, versatile grid pattern ensuring perfect alignment in any modern space.',
         series: 'Essentials',
-        tier: 'essentials',
-        colors: ['#000000', '#FFFFFF', '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#00FFFF', '#FF00FF']
+        tier: 'essentials'
     },
     'e_wave': {
         title: 'Sine Wave Basic',
         price: '40.00',
         desc: 'Pure mathematical oscillation. A standard reference for audio and physics enthusiasts.',
         series: 'Essentials',
-        tier: 'essentials',
-        colors: ['#1a1a1a', '#e5e5e5', '#3357ff', '#ff3357', '#33ff57', '#ffda33', '#33ffff', '#ff33ff']
+        tier: 'essentials'
     },
     'e_topo': {
         title: 'Topographic Lines',
         price: '50.00',
         desc: 'Elevation contours map. Simple, organic lines representing terrain.',
         series: 'Essentials',
-        tier: 'essentials',
-        colors: ['#2e2e2e', '#f0f0f0', '#4a90e2', '#e24a4a', '#50c878', '#f2c94c', '#9b51e0', '#f5a623']
+        tier: 'essentials'
     },
     'e_circuit': {
         title: 'Basic PCB Trace',
         price: '55.00',
         desc: 'Fundamental electronic pathways. The copper roads of modern technology.',
         series: 'Essentials',
-        tier: 'essentials',
-        colors: ['#1c2e1c', '#e6ffe6', '#008000', '#800000', '#000080', '#808000', '#800080', '#008080']
+        tier: 'essentials'
     },
     'e_bauhaus': {
         title: 'Bauhaus Shapes',
         price: '60.00',
         desc: 'Primary geometric forms: Triangle, Square, Circle. The basics of design theory.',
         series: 'Essentials',
-        tier: 'essentials',
-        colors: ['#111111', '#eeeeee', '#d43535', '#356dd4', '#d4a835', '#35d49a', '#9a35d4', '#d46d35']
+        tier: 'essentials'
     },
     'e_spectrum': {
         title: 'Visible Spectrum',
         price: '48.00',
         desc: 'Linear gradient of visible light. Simple physics for your wall.',
         series: 'Essentials',
-        tier: 'essentials',
-        colors: ['#000000', '#FFFFFF', '#666666', '#999999', '#CCCCCC', '#333333', '#555555', '#777777']
+        tier: 'essentials'
     },
     'e_iso': {
         title: 'Isometric Cube',
         price: '42.00',
         desc: 'A perfect cube in 30-degree isometric projection. Depth on a flat plane.',
         series: 'Essentials',
-        tier: 'essentials',
-        colors: ['#222222', '#dddddd', '#ff5722', '#2196f3', '#4caf50', '#ffeb3b', '#673ab7', '#e91e63']
+        tier: 'essentials'
     },
     'e_golden': {
         title: 'Golden Spiral',
         price: '65.00',
         desc: 'Fibonacci sequence visualization. Nature\'s perfect proportion.',
         series: 'Essentials',
-        tier: 'essentials',
-        colors: ['#0a0a0a', '#fdfdfd', '#d4af37', '#c0c0c0', '#cd7f32', '#b87333', '#50c878', '#0047ab']
+        tier: 'essentials'
     }
 };
 
@@ -611,7 +593,7 @@ function initProductPage() {
     // Colors
     const colorSelector = document.getElementById('color-selector');
     colorSelector.innerHTML = ''; // Clear existing
-    product.colors.forEach((color, index) => {
+    GLOBAL_COLOR_PALETTE.forEach((color, index) => {
         const div = document.createElement('div');
         div.className = 'color-option';
         div.style.backgroundColor = color;
