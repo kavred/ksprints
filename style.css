@@ -174,9 +174,9 @@ a {
 /* Layer Content Styling - inherits pointer-events from parent */
 .layer-content {
     width: 100%;
-    max-width: 73vw;
+    max-width: 1400px;
     height: 100%;
-    padding: 0 1.6vw;
+    padding: 0 2rem;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -267,8 +267,8 @@ a {
 
 .text-block {
     flex: 1;
-    padding: 3.3vw;
-    max-width: 31vw;
+    padding: 4rem;
+    max-width: 600px;
     background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(20px);
     border: 1px solid var(--border);
@@ -276,8 +276,8 @@ a {
 }
 
 .text-block h2 {
-    font-size: clamp(2rem, 2.9vw, 3.5rem);
-    margin-bottom: 1.25vw;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .text-block p {
@@ -289,7 +289,7 @@ a {
 .visual-block {
     flex: 1;
     height: 100%;
-    margin: 0 1.6vw;
+    margin: 0 2rem;
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -305,13 +305,13 @@ a {
 .center-content {
     align-items: center;
     text-align: center;
-    max-width: 42vw;
+    max-width: 800px;
     margin: 0 auto;
 }
 
 .center-content h2 {
-    font-size: clamp(2.5rem, 3.3vw, 4rem);
-    margin-bottom: 1.25vw;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
 }
 
 .center-content p {
@@ -342,7 +342,7 @@ a {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding-top: 7.3vw;
+    padding-top: 140px;
 }
 
 /* Header Refactor */
@@ -355,7 +355,7 @@ a {
     width: 100%;
     z-index: 1000;
     border-bottom: 1px solid var(--border);
-    padding: 0.8vw 1.6vw;
+    padding: 1rem 2rem;
 }
 
 .header-container {
@@ -603,7 +603,7 @@ a.btn {
 /* -------------------------------------------------------------------------- */
 
 .collections-page {
-    padding-top: 6.25vw;
+    padding-top: 120px;
     /* Space for fixed header */
     background-color: var(--bg-primary);
     min-height: 100vh;
@@ -619,10 +619,10 @@ a.btn {
 }
 
 .collection-hero h1 {
-    font-size: clamp(3rem, 4.1vw, 5rem);
+    font-size: 5rem;
     font-weight: 300;
     letter-spacing: -0.02em;
-    margin: 0.8vw 0;
+    margin: 1rem 0;
 }
 
 .collection-hero p {
@@ -633,9 +633,9 @@ a.btn {
 }
 
 .collection-directory {
-    max-width: 73vw;
+    max-width: 1400px;
     margin: 0 auto;
-    padding-bottom: 8.3vw;
+    padding-bottom: 10rem;
 }
 
 .collection-item {
@@ -652,7 +652,7 @@ a.btn {
 .collection-visual,
 .collection-info {
     flex: 1;
-    padding: 3.3vw;
+    padding: 4rem;
 }
 
 .collection-visual {
@@ -683,19 +683,19 @@ a.btn {
 }
 
 .collection-number {
-    font-size: clamp(4rem, 6.6vw, 8rem);
+    font-size: 8rem;
     font-weight: 800;
     color: rgba(255, 255, 255, 0.03);
     line-height: 1;
     display: block;
-    margin-bottom: -1.6vw;
+    margin-bottom: -2rem;
     position: relative;
     z-index: 0;
 }
 
 .collection-info h2 {
-    font-size: clamp(1.8rem, 2.5vw, 3rem);
-    margin-bottom: 1.25vw;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
 }
@@ -762,7 +762,7 @@ a.btn {
 /* -------------------------------------------------------------------------- */
 
 .series-page {
-    padding-top: 6.25vw;
+    padding-top: 120px;
     background-color: var(--bg-primary);
     min-height: 100vh;
 }
@@ -779,9 +779,9 @@ a.btn {
 }
 
 .series-hero h1 {
-    font-size: clamp(2.5rem, 3.3vw, 4rem);
+    font-size: 4rem;
     font-weight: 300;
-    margin-bottom: 0.8vw;
+    margin-bottom: 1rem;
 }
 
 .series-hero .breadcrumb {
@@ -804,10 +804,10 @@ a.btn {
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.6vw;
-    max-width: 73vw;
+    gap: 2rem;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 1.6vw 6.6vw 1.6vw;
+    padding: 0 2rem 8rem 2rem;
 }
 
 .product-card {
@@ -856,7 +856,7 @@ a.btn {
 }
 
 .product-details {
-    padding: 1.25vw;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -939,20 +939,20 @@ a.btn {
 /* -------------------------------------------------------------------------- */
 
 .product-detail-page {
-    padding-top: 7.3vw;
+    padding-top: 140px;
     /* Header clearance */
-    padding-bottom: 6.6vw;
+    padding-bottom: 8rem;
     background-color: var(--bg-primary);
     min-height: 100vh;
 }
 
 .product-container {
-    max-width: 62.5vw;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.6vw;
+    padding: 0 2rem;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: 3.3vw;
+    gap: 4rem;
 }
 
 .product-gallery {
@@ -975,9 +975,9 @@ a.btn {
 }
 
 .product-info-panel h1 {
-    font-size: clamp(1.8rem, 2.1vw, 2.5rem);
-    margin-bottom: 0.4vw;
-    margin-top: 0.8vw;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
 }
 
 .product-info-panel .price {
@@ -1102,23 +1102,23 @@ a.btn {
 /* -------------------------------------------------------------------------- */
 
 .cart-page {
-    padding-top: 7.3vw;
-    padding-bottom: 6.6vw;
+    padding-top: 140px;
+    padding-bottom: 8rem;
     background-color: var(--bg-primary);
     min-height: 80vh;
 }
 
 .cart-container {
-    max-width: 52vw;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 1.6vw;
+    padding: 0 2rem;
 }
 
 .cart-container h1 {
-    font-size: clamp(1.8rem, 2.1vw, 2.5rem);
-    margin-bottom: 1.6vw;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 0.8vw;
+    padding-bottom: 1rem;
 }
 
 .empty-msg {
