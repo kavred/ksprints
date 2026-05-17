@@ -694,7 +694,9 @@ function updateCartItemQty(index, change) {
     const cart = getCart();
     const newQty = cart[index].qty + change;
 
-    if (newQty > 0 && newQty <= 10) {
+    if (newQty === 0) {
+        removeFromCart(index);
+    } else if (newQty > 0 && newQty <= 10) {
         cart[index].qty = newQty;
         saveCart(cart);
         initCartPage();
@@ -740,8 +742,14 @@ function initCartPage() {
         const row = document.createElement('div');
         row.className = 'cart-item-row';
 
+        let thumbHtml = `<div class="cart-thumb" style="background-color: #222;"></div>`;
+        const imgSrc = buildImageUrl(product.imageId);
+        if (imgSrc) {
+            thumbHtml = `<div class="cart-thumb" style="background-image: url('${imgSrc}'); background-position: center; background-size: cover;"></div>`;
+        }
+
         row.innerHTML = `
-            <div class="cart-thumb" style="background-color: #222;"></div> 
+            ${thumbHtml}
             <div class="cart-details">
                 <h3>${product.title}</h3>
                 <div class="meta">
