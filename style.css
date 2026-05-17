@@ -1105,7 +1105,7 @@ a.btn {
     padding-top: 7.3vw;
     padding-bottom: 6.6vw;
     background-color: var(--bg-primary);
-    min-height: 100vh;
+    min-height: 80vh;
 }
 
 .cart-container {
