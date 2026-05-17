@@ -689,6 +689,11 @@ function updateCartItemQty(index, change) {
     }
 }
 
+function clearCart() {
+    saveCart([]);
+    initCartPage();
+}
+
 // Render Cart Page
 function initCartPage() {
     updateCartCount();
