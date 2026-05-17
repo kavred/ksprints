@@ -34,7 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (productGrid) {
         // Determine page context via URL or simple body check
         const path = window.location.pathname;
-        if (path.includes('collections.html')) {
+        if (path.includes('collection-vase.html')) {
+            renderProducts('vase');
+        } else if (path.includes('collection-structural.html')) {
+            renderProducts('structural');
+        } else if (path.includes('collection-aerospace.html')) {
+            renderProducts('aerospace');
+        } else if (path.includes('collections.html')) {
             renderProducts('signature');
         } else if (path.includes('essentials.html')) {
             renderProducts('essentials');
@@ -241,6 +247,12 @@ function renderProducts(filterMode = 'all') {
     let filteredProducts = allProducts;
     if (filterMode === 'signature') {
         filteredProducts = allProducts.filter(p => p.tier === 'signature');
+    } else if (filterMode === 'vase') {
+        filteredProducts = allProducts.filter(p => p.series === 'Vase');
+    } else if (filterMode === 'structural') {
+        filteredProducts = allProducts.filter(p => p.series === 'Structural');
+    } else if (filterMode === 'aerospace') {
+        filteredProducts = allProducts.filter(p => p.series === 'Aerospace');
     } else if (filterMode === 'essentials') {
         filteredProducts = allProducts.filter(p => p.tier === 'essentials');
     }
