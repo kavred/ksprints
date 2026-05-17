@@ -328,7 +328,6 @@ function renderProducts(filterMode = 'all') {
                     </div>
                     <div class="card-content">
                         <div class="card-header">
-                            <span class="card-category">${product.series}</span>
                             <span class="card-tier ${tierClass}">${tierLabel}</span>
                         </div>
                         <h3 class="card-title">${product.title}</h3>
