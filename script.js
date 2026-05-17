@@ -369,6 +369,14 @@ const productDatabase = {
         tier: 'signature',
         imageId: 'Japandi Vase'
     },
+    'v_twisted_elegant': {
+        title: 'Twisted Elegant Vase',
+        price: '38.00',
+        desc: 'Elevate your space with the Twisted Elegant Vase, a stunning fusion of modern art and architectural design. Featuring a bold, faceted structure that gracefully spirals upward, this striking piece is crafted to catch the light from every angle. Its unique, finely textured finish creates a premium sheen that highlights the dynamic curves and crisp lines of the vase. Whether displayed as a standalone sculptural piece or used to hold dried botanicals and pampas grass, it brings a sophisticated, contemporary edge to any room.',
+        series: 'Vase',
+        tier: 'signature',
+        imageId: 'Twisted Elegant Vase'
+    },
 
     // STRUCTURAL SERIES (Signature)
     's_bridge': {
