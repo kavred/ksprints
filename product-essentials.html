@@ -92,6 +92,33 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Init Page logic (assuming initProductPage handles standard rendering)
+            if (typeof initProductPage === 'function') {
+                initProductPage();
+            }
+
+            // Add To Cart Logic
+            const btn = document.getElementById('add-to-cart-btn');
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    const params = new URLSearchParams(window.location.search);
+                    const id = params.get('id');
+
+                    // Get Qty
+                    const qty = parseInt(document.getElementById('qty-input').value);
+
+                    // Get Active Color
+                    const activeColorEl = document.querySelector('.color-option.active');
+                    const color = activeColorEl ? activeColorEl.style.backgroundColor : '#000'; // Fallback
+
+                    // Call Global Function
+                    addToCart(id, color, qty);
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
