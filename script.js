@@ -34,15 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (productGrid) {
         // Determine page context via URL or simple body check
         const path = window.location.pathname;
-        if (path.includes('collection-vase.html')) {
+        if (path.includes('collection-vase')) {
             renderProducts('vase');
-        } else if (path.includes('collection-structural.html')) {
+        } else if (path.includes('collection-structural')) {
             renderProducts('structural');
-        } else if (path.includes('collection-aerospace.html')) {
+        } else if (path.includes('collection-aerospace')) {
             renderProducts('aerospace');
-        } else if (path.includes('collections.html')) {
+        } else if (path.includes('collections')) {
             renderProducts('signature');
-        } else if (path.includes('essentials.html')) {
+        } else if (path.includes('essentials')) {
             renderProducts('essentials');
         } else {
             // Fallback
@@ -309,13 +309,6 @@ function renderProducts(filterMode = 'all') {
             `;
         } else {
             // SIGNATURE CARD
-            let colorsHtml = '';
-            if (product.tier === 'essentials' && product.colors) {
-                colorsHtml = `<div class="card-colors">
-                    ${product.colors.map(c => `<span class="color-dot-small" style="background-color: ${c}"></span>`).join('')}
-                </div>`;
-            }
-
             let imgSrc = buildImageUrl(product.imageId);
             let imageContent = imgSrc 
                 ? `<img src="${imgSrc}" alt="${product.title}" class="card-image-full" style="width:100%; height:100%; object-fit:cover;">`
@@ -698,6 +691,8 @@ function updateCartItemQty(index, change) {
         cart[index].qty = newQty;
         saveCart(cart);
         initCartPage();
+    } else if (newQty === 0) {
+        removeFromCart(index);
     }
 }
 
@@ -750,7 +745,7 @@ function initCartPage() {
             </div>
             <div class="quantity-selector">
                 <button class="qty-btn" onclick="updateCartItemQty(${index}, -1)">-</button>
-                <input type="text" id="qty-input" value="${item.qty}" readonly>
+                <input type="text" id="qty-input-${index}" class="qty-input" value="${item.qty}" readonly>
                 <button class="qty-btn" onclick="updateCartItemQty(${index}, 1)">+</button>
             </div>
             <div class="cart-price">$${itemTotal.toFixed(2)}</div>
@@ -763,7 +758,47 @@ function initCartPage() {
     totalEl.innerText = '$' + total.toFixed(2);
 }
 
-// Initialize validation on load
+// Global Page Initialization
 document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
+
+    // Product Page logic
+    if (document.getElementById('product-title')) {
+        if (typeof initProductPage === 'function') {
+            initProductPage();
+        }
+
+        // Add To Cart Logic
+        const btn = document.getElementById('add-to-cart-btn');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                const params = new URLSearchParams(window.location.search);
+                const id = params.get('id');
+
+                // Validate product exists
+                if (!id || !productDatabase[id]) {
+                    alert('Invalid product. Cannot add to cart.');
+                    return;
+                }
+
+                // Get Qty
+                const qtyInput = document.getElementById('qty-input');
+                const qty = qtyInput ? parseInt(qtyInput.value) : 1;
+
+                // Get Active Color
+                const activeColorEl = document.querySelector('.color-option.active');
+                const color = activeColorEl ? activeColorEl.style.backgroundColor : (productDatabase[id].colors ? productDatabase[id].colors[0] : '#000');
+
+                // Call Global Function
+                addToCart(id, color, qty);
+            });
+        }
+    }
+
+    // Cart Page logic
+    if (document.getElementById('cart-items-list')) {
+        if (typeof initCartPage === 'function') {
+            initCartPage();
+        }
+    }
 });
