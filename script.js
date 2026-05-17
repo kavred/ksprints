@@ -9,7 +9,7 @@ function buildImageUrl(imageId) {
     if (!imageId) return '';
     if (imageId.startsWith('http')) return imageId; // Allow absolute URLs as fallback
     // q_auto and f_auto optimize quality and format automatically
-    return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/q_auto,f_auto/${imageId}`;
+    return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/q_auto,f_auto/${encodeURIComponent(imageId)}`;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -343,14 +343,14 @@ function renderProducts(filterMode = 'all') {
 
 const productDatabase = {
     // VASE SERIES (Signature)
-    'v_vase1': {
-        title: 'The Modernist Vase',
-        price: '240.00',
-        desc: 'Elegant, minimalist structure. A placeholder for your first vase.',
+    'v_japandi': {
+        title: 'Japandi Vase',
+        price: '40.00',
+        desc: 'Embrace the perfect harmony of Japanese minimalism and Scandinavian functionality with our stunning Japandi Vase. Designed for the modern home, this piece effortlessly introduces a "Luxurious Gallery" aesthetic to any room. With its elegant, sweeping curves and matte ribbed texture, this vase serves as a captivating standalone piece of art or a sophisticated vessel for dried florals, pampas grass, and botanical branches. Credit: @shacharbh_4653386 on Printables.',
         series: 'Vase',
         tier: 'signature',
-        colors: ['#D4AF37', '#C0C0C0', '#cd7f32', '#333333'],
-        imageId: '' // Add your Cloudinary image Public ID here later (e.g., 'my-first-vase')
+        colors: ['#FFA500', '#ADD8E6', '#FF0000'],
+        imageId: 'Japandi Vase'
     },
 
     // STRUCTURAL SERIES (Signature)
