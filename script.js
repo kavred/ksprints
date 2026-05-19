@@ -380,7 +380,7 @@ const productDatabase = {
     'v_striped': {
         title: 'Striped Vase',
         price: '45.00',
-        desc: 'Bring a touch of nature-inspired elegance indoors with the Striped Vase. Defined by its organic, sweeping lines and deep ribbed texture, this modern sculptural piece mimics the fluid, undulating beauty of natural forms. The prominent vertical stripes create a stunning interplay of light and shadow, drawing the eye upward from its wide, stable base to its gracefully wavy, flared rim. With its highly tactile surface and elegant curves, it serves as a sophisticated statement piece whether displayed empty or styled with your favorite dried botanicals.',
+        desc: 'Bring a touch of nature-inspired elegance indoors with the Striped Vase. Defined by its organic, sweeping lines and deep ribbed texture, this modern sculptural piece mimics the fluid, undulating beauty of natural forms. The prominent vertical stripes create a stunning interplay of light and shadow, drawing the eye upward from its wide, stable base to its gracefully wavy, flared rim. With its highly tactile surface and elegant curves, it serves as a sophisticated statement piece whether displayed empty or styled with your favorite dried botanicals. Credit: @G_rex_B_279121 on Printables.',
         series: 'Vase',
         tier: 'signature',
         imageId: 'Striped Vase'
