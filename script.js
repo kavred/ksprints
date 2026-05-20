@@ -1,4 +1,4 @@
-// KNR Prints - Global Logic
+// KS Prints - Global Logic
 
 /* -------------------------------------------------------------------------- */
 /*                            CLOUDINARY CONFIG                               */
@@ -644,12 +644,12 @@ function initProductPage() {
 
 // Store: [{ id: 'k_turbine', color: '#hex', qty: 1 }]
 function getCart() {
-    const stored = localStorage.getItem('knr_cart');
+    const stored = localStorage.getItem('ks_cart');
     return stored ? JSON.parse(stored) : [];
 }
 
 function saveCart(cart) {
-    localStorage.setItem('knr_cart', JSON.stringify(cart));
+    localStorage.setItem('ks_cart', JSON.stringify(cart));
     updateCartCount();
 }
 
