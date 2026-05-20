@@ -288,61 +288,37 @@ function renderProducts(filterMode = 'all') {
             viewLink = `product-essentials.html?id=${product.id}`;
         }
 
-        // SIMPLIFIED CARD FOR ESSENTIALS
-        if (product.tier === 'essentials') {
-            card.innerHTML = `
-                <a href="${viewLink}" class="card-link-wrapper">
-                    <div class="card-image-wrapper">
-                        <!-- Placeholder with dark background -->
-                        <div class="card-image-placeholder essentials-placeholder" style="background: radial-gradient(circle, #222, #050505);">
-                            <span style="opacity:0.5; font-size:0.8rem; letter-spacing:0.1em;">IMAGE PLACEHOLDER</span>
-                        </div>
-                    </div>
-                    <div class="card-content essentials-content">
-                        <!-- Minimal Header -->
-                        <h3 class="card-title" style="margin-top: 1rem; margin-bottom: 0.5rem; font-weight: 500;">${product.title}</h3>
-                        <div class="card-price" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">$${product.price}</div>
-                        
-                        <p class="card-desc-short" style="font-size: 0.85rem; color: #666;">${shortDesc}</p>
-                    </div>
-                </a>
-            `;
-        } else {
-            // SIGNATURE CARD
-            let colorsHtml = '';
-            if (product.tier === 'signature') {
-                colorsHtml = `<div class="card-colors">
-                    ${GLOBAL_COLOR_PALETTE.map(c => `<span class="color-dot-small" style="background-color: ${c}"></span>`).join('')}
-                </div>`;
-            }
+        // UNIFIED CARD FORMAT FOR ALL TIERS
+        let colorsHtml = `<div class="card-colors">
+            ${GLOBAL_COLOR_PALETTE.map(c => `<span class="color-dot-small" style="background-color: ${c}"></span>`).join('')}
+        </div>`;
 
-            let imgSrc = buildImageUrl(product.imageId);
-            let imageContent = imgSrc 
-                ? `<img src="${imgSrc}" alt="${product.title}" class="card-image-full" style="width:100%; height:100%; object-fit:cover;">`
-                : `<div class="card-image-placeholder"><span>${product.title}</span></div>`;
+        let imgSrc = buildImageUrl(product.imageId);
+        let imageContent = imgSrc 
+            ? `<img src="${imgSrc}" alt="${product.title}" class="card-image-full" style="width:100%; height:100%; object-fit:cover;">`
+            : `<div class="card-image-placeholder"><span>${product.title}</span></div>`;
 
-            card.innerHTML = `
-                <a href="${viewLink}" class="card-link-wrapper">
-                    <div class="card-image-wrapper">
-                        ${imageContent}
+        card.innerHTML = `
+            <a href="${viewLink}" class="card-link-wrapper">
+                <div class="card-image-wrapper">
+                    ${imageContent}
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="card-tier ${tierClass}">${tierLabel}</span>
                     </div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <span class="card-tier ${tierClass}">${tierLabel}</span>
-                        </div>
-                        <h3 class="card-title">${product.title}</h3>
-                        <div class="card-price">$${product.price}</div>
-                        
-                        ${specsHtml}
-                        ${commentHtml}
-                        
-                        <div class="card-meta">
-                            <span class="btn-text">View Details →</span>
-                        </div>
+                    <h3 class="card-title">${product.title}</h3>
+                    <div class="card-price">$${product.price}</div>
+                    
+                    ${specsHtml}
+                    ${commentHtml}
+                    
+                    <div class="card-meta">
+                        <span class="btn-text">View Details →</span>
                     </div>
-                </a>
-            `;
-        }
+                </div>
+            </a>
+        `;
 
         productGrid.appendChild(card);
     });
@@ -358,7 +334,13 @@ const GLOBAL_COLOR_PALETTE = ['#050505', '#ffffff', '#E11D48', '#4682B4', '#50c8
 /* -------------------------------------------------------------------------- */
 /*                             DYNAMIC PRODUCT LOGIC                           */
 /* -------------------------------------------------------------------------- */
-
+//
+// ⚠️  IMPORTANT — KEEP IN SYNC WITH SERVER-SIDE PRICING ⚠️
+// If you add, remove, or change a product's price here, you MUST also update
+// the corresponding entry in:  api/product-data.js
+// That file is the server-side source of truth for what Stripe charges.
+// Failure to keep both files in sync will cause price mismatches.
+//
 const productDatabase = {
     // VASE SERIES (Signature)
     'v_japandi': {
@@ -766,6 +748,53 @@ function initCartPage() {
     });
 
     totalEl.innerText = '$' + total.toFixed(2);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                           STRIPE CHECKOUT LOGIC                            */
+/* -------------------------------------------------------------------------- */
+
+async function proceedToCheckout() {
+    const cart = getCart();
+    if (cart.length === 0) return;
+
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const statusEl = document.getElementById('checkout-status');
+
+    // Show loading state
+    checkoutBtn.disabled = true;
+    checkoutBtn.innerText = 'Processing...';
+    if (statusEl) {
+        statusEl.style.display = 'block';
+        statusEl.style.color = 'var(--text-secondary)';
+        statusEl.innerText = 'Creating your checkout session...';
+    }
+
+    try {
+        const response = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items: cart }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Checkout failed.');
+        }
+
+        // Redirect to Stripe Checkout
+        window.location.href = data.url;
+
+    } catch (err) {
+        console.error('Checkout error:', err);
+        if (statusEl) {
+            statusEl.style.color = '#E11D48';
+            statusEl.innerText = err.message || 'Something went wrong. Please try again.';
+        }
+        checkoutBtn.disabled = false;
+        checkoutBtn.innerText = 'Proceed to Checkout';
+    }
 }
 
 // Initialize validation on load

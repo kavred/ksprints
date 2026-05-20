@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Cancelled | KS Prints</title>
+    <meta name="description" content="Your payment was cancelled.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">KS<span class="text-accent">PRINTS</span></a>
+            <nav class="nav desktop-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="collections.html" class="nav-link">Signature</a>
+                <a href="essentials.html" class="nav-link">Essentials</a>
+                <a href="cart.html" class="nav-link">Cart (<span id="cart-count">0</span>)</a>
+            </nav>
+            <div class="nav-cta desktop-cta">
+                <a href="custom.html" class="btn-nav-cta">Start Project</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+        <div class="mobile-nav-overlay">
+            <nav class="mobile-nav">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <a href="collections.html" class="mobile-nav-link">Signature</a>
+                <a href="essentials.html" class="mobile-nav-link">Essentials</a>
+                <a href="cart.html" class="mobile-nav-link">Cart (<span id="mobile-cart-count">0</span>)</a>
+                <a href="custom.html" class="btn-nav-cta mobile-cta">Start Project</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cart-page">
+        <div class="cart-container" style="text-align: center; padding-top: 4rem;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Payment Cancelled</h1>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 500px; margin: 0 auto 2.5rem auto; line-height: 1.7;">
+                Your payment was not completed. Don't worry — your cart items are still saved.
+            </p>
+            <a href="cart.html" class="btn btn-primary">Return to Cart</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 KS Prints</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
