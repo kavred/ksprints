@@ -21,6 +21,7 @@ const serverProductData = {
     'v_twisted_elegant':  { title: 'Twisted Elegant Vase',      price: 38.00 },
     'v_striped':          { title: 'Striped Vase',              price: 45.00 },
     'v_other_striped':    { title: 'Other Striped Vase',        price: 42.00 },
+    'v_modern_bowl':      { title: 'Modern Bowl',               price: 30.00 },
 
     // STRUCTURAL SERIES (Signature)
     's_bridge':   { title: 'Suspension Bridge Node',    price: 320.00 },

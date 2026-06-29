@@ -375,6 +375,14 @@ const productDatabase = {
         tier: 'signature',
         imageId: 'Other Striped Vase'
     },
+    'v_modern_bowl': {
+        title: 'Modern Bowl',
+        price: '30.00',
+        desc: 'Step away from traditional forms with a centerpiece that commands attention. The Modern Bowl is a masterclass in minimalist design, offering a sleek, continuous silhouette that feels both futuristic and fundamentally organic. Whether it is anchoring your dining table or styling a raw-wood entryway console, this bowl delivers a high-end gallery aesthetic without overpowering your space.',
+        series: 'Vase',
+        tier: 'signature',
+        imageId: 'Modern Bowl'
+    },
 
     // STRUCTURAL SERIES (Signature)
     's_bridge': {
