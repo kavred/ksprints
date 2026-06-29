@@ -367,6 +367,14 @@ const productDatabase = {
         tier: 'signature',
         imageId: 'Striped Vase'
     },
+    'v_other_striped': {
+        title: 'Other Striped Vase',
+        price: '42.00',
+        desc: 'Bring a touch of fluid, modern sophistication into your home with the Other Striped Vase. Designed to effortlessly introduce an aesthetic to any room, this striking piece features sweeping, asymmetrical curves and a deep, continuous ribbed surface. Whether displayed as a captivating standalone art piece or used to hold dried botanical branches, its dynamic shape creates an ever-changing display of light and shadow throughout the day.',
+        series: 'Vase',
+        tier: 'signature',
+        imageId: 'Other Striped Vase'
+    },
 
     // STRUCTURAL SERIES (Signature)
     's_bridge': {
