@@ -563,6 +563,16 @@ a {
         max-width: 100%;
         margin: 0 0 2rem 0;
     }
+
+    .text-block {
+        padding: 2rem;
+    }
+
+    .text-block h2,
+    .center-content h2 {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        word-wrap: break-word;
+    }
 }
 
 /* Footer Fixes */
