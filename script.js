@@ -805,7 +805,7 @@ async function proceedToCheckout() {
     } catch (err) {
         console.error('Checkout error:', err);
         if (statusEl) {
-            statusEl.style.color = '#E11D48';
+            statusEl.style.color = 'var(--accent)';
             statusEl.innerText = err.message || 'Something went wrong. Please try again.';
         }
         checkoutBtn.disabled = false;
