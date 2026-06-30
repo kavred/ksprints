@@ -329,7 +329,7 @@ function renderProducts(filterMode = 'all') {
 /* -------------------------------------------------------------------------- */
 // Central location to define color options for ALL products.
 // Add or remove hex codes here to change available colors globally across the site.
-const GLOBAL_COLOR_PALETTE = ['#050505', '#ffffff', '#E11D48', '#4682B4', '#50c878', '#8B4513'];
+const GLOBAL_COLOR_PALETTE = ['#1A1A1A', '#FFFFFF', '#C8352D', '#4682B4', '#50c878', '#8B4513'];
 
 /* -------------------------------------------------------------------------- */
 /*                             DYNAMIC PRODUCT LOGIC                           */
@@ -598,10 +598,10 @@ function initProductPage() {
         mainImg.style.background = 'none';
     } else {
         mainImg.innerText = product.title; // Placeholder text
-        if (product.series === 'Vase') mainImg.style.background = 'radial-gradient(circle, #333, #000)';
-        if (product.series === 'Structural') mainImg.style.background = 'radial-gradient(circle, #2a2a2a, #111)';
-        if (product.series === 'Aerospace') mainImg.style.background = 'radial-gradient(circle, #1f1f1f, #050505)';
-        if (product.series === 'Essentials') mainImg.style.background = 'radial-gradient(circle, #444, #111)'; // Generic background for Essentials
+        if (product.series === 'Vase') mainImg.style.background = 'radial-gradient(circle, #E8D8C4, #DDD0BC)';
+        if (product.series === 'Structural') mainImg.style.background = 'radial-gradient(circle, #DDD0BC, #D4C4B0)';
+        if (product.series === 'Aerospace') mainImg.style.background = 'radial-gradient(circle, #D4C4B0, #C8B8A4)';
+        if (product.series === 'Essentials') mainImg.style.background = 'radial-gradient(circle, #E8D8C4, #DDD0BC)'; // Generic background for Essentials
     }
 
     // Colors
@@ -737,7 +737,7 @@ function initCartPage() {
         const row = document.createElement('div');
         row.className = 'cart-item-row';
 
-        let thumbHtml = `<div class="cart-thumb" style="background-color: #222;"></div>`;
+        let thumbHtml = `<div class="cart-thumb" style="background-color: #E8D8C4;"></div>`;
         const imgSrc = buildImageUrl(product.imageId);
         if (imgSrc) {
             thumbHtml = `<div class="cart-thumb" style="background-image: url('${imgSrc}'); background-position: center; background-size: cover;"></div>`;
