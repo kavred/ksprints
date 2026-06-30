@@ -581,14 +581,11 @@ a {
 .hero-text {
     position: relative;
     padding: 3rem;
-    background: rgba(255, 255, 255, 0.85);
-    /* Significantly Darker for readability */
+    background: transparent;
     backdrop-filter: blur(15px);
     /* Stronger blur */
     border-radius: 8px;
     pointer-events: auto;
-    /* subtle border to define edge */
-    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* Legacy .passed class removed - now using .layer-passed */
