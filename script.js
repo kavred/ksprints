@@ -501,63 +501,7 @@ const productDatabase = {
     },
 
     // ESSENTIALS COLLECTION
-    // Everyday products for a reasonable price. 8 colors.
-    'e_grid': {
-        title: 'The Grid System',
-        price: '45.00',
-        desc: 'A minimal, versatile grid pattern ensuring perfect alignment in any modern space.',
-        series: 'Essentials',
-        tier: 'essentials'
-    },
-    'e_wave': {
-        title: 'Sine Wave Basic',
-        price: '40.00',
-        desc: 'Pure mathematical oscillation. A standard reference for audio and physics enthusiasts.',
-        series: 'Essentials',
-        tier: 'essentials'
-    },
-    'e_topo': {
-        title: 'Topographic Lines',
-        price: '50.00',
-        desc: 'Elevation contours map. Simple, organic lines representing terrain.',
-        series: 'Essentials',
-        tier: 'essentials'
-    },
-    'e_circuit': {
-        title: 'Basic PCB Trace',
-        price: '55.00',
-        desc: 'Fundamental electronic pathways. The copper roads of modern technology.',
-        series: 'Essentials',
-        tier: 'essentials'
-    },
-    'e_bauhaus': {
-        title: 'Bauhaus Shapes',
-        price: '60.00',
-        desc: 'Primary geometric forms: Triangle, Square, Circle. The basics of design theory.',
-        series: 'Essentials',
-        tier: 'essentials'
-    },
-    'e_spectrum': {
-        title: 'Visible Spectrum',
-        price: '48.00',
-        desc: 'Linear gradient of visible light. Simple physics for your wall.',
-        series: 'Essentials',
-        tier: 'essentials'
-    },
-    'e_iso': {
-        title: 'Isometric Cube',
-        price: '42.00',
-        desc: 'A perfect cube in 30-degree isometric projection. Depth on a flat plane.',
-        series: 'Essentials',
-        tier: 'essentials'
-    },
-    'e_golden': {
-        title: 'Golden Spiral',
-        price: '65.00',
-        desc: 'Fibonacci sequence visualization. Nature\'s perfect proportion.',
-        series: 'Essentials',
-        tier: 'essentials'
-    },
+    // Everyday products for a reasonable price.
     'e_corner_shelf': {
         title: 'Multi Tier Corner Shelf',
         price: '25.00',

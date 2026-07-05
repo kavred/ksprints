@@ -44,14 +44,6 @@ const serverProductData = {
     'a_lander':  { title: 'Landing Hexapod',         price: 295.00 },
 
     // ESSENTIALS COLLECTION
-    'e_grid':     { title: 'The Grid System',    price: 45.00 },
-    'e_wave':     { title: 'Sine Wave Basic',    price: 40.00 },
-    'e_topo':     { title: 'Topographic Lines',  price: 50.00 },
-    'e_circuit':  { title: 'Basic PCB Trace',    price: 55.00 },
-    'e_bauhaus':  { title: 'Bauhaus Shapes',     price: 60.00 },
-    'e_spectrum': { title: 'Visible Spectrum',   price: 48.00 },
-    'e_iso':      { title: 'Isometric Cube',     price: 42.00 },
-    'e_golden':   { title: 'Golden Spiral',      price: 65.00 },
     'e_corner_shelf': { title: 'Multi Tier Corner Shelf', price: 25.00 }
 };
 
