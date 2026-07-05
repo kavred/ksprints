@@ -1430,8 +1430,7 @@ a.btn {
 }
 
 .product-card.essentials {
-    background: transparent;
-    border: none;
+    /* Removed transparent background and border none to match vase series */
     transition: transform 0.3s ease;
 }
 
