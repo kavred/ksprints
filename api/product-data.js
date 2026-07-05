@@ -51,7 +51,8 @@ const serverProductData = {
     'e_bauhaus':  { title: 'Bauhaus Shapes',     price: 60.00 },
     'e_spectrum': { title: 'Visible Spectrum',   price: 48.00 },
     'e_iso':      { title: 'Isometric Cube',     price: 42.00 },
-    'e_golden':   { title: 'Golden Spiral',      price: 65.00 }
+    'e_golden':   { title: 'Golden Spiral',      price: 65.00 },
+    'e_corner_shelf': { title: 'Multi Tier Corner Shelf', price: 25.00 }
 };
 
 module.exports = serverProductData;

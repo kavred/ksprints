@@ -557,6 +557,14 @@ const productDatabase = {
         desc: 'Fibonacci sequence visualization. Nature\'s perfect proportion.',
         series: 'Essentials',
         tier: 'essentials'
+    },
+    'e_corner_shelf': {
+        title: 'Multi Tier Corner Shelf',
+        price: '25.00',
+        desc: 'Transform overlooked corners into striking focal points with our Multi Tier Corner Shelf. Designed to effortlessly introduce an aesthetic to any room, this piece merges bold geometric styling with everyday utility. Featuring a vibrant two-tone color palette with crisp white cylindrical pillars and striking red triangular trays, it acts as a functional display for small plants, collectibles, or even as a minimalist desk organizer.',
+        series: 'Essentials',
+        tier: 'essentials',
+        imageId: 'Multi Tier Corner Shelf'
     }
 };
 
