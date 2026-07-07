@@ -23,25 +23,25 @@ const serverProductData = {
     'v_other_striped':    { title: 'Other Striped Vase',        price: 42.00 },
     'v_modern_bowl':      { title: 'Modern Bowl',               price: 30.00 },
 
-    // STRUCTURAL SERIES (Signature)
-    's_bridge':   { title: 'Suspension Bridge Node',    price: 320.00 },
-    's_beam':     { title: 'I-Beam Stress Map',         price: 190.00 },
-    's_dome':     { title: 'Geodesic Dome Joint',       price: 210.00 },
-    's_sky':      { title: 'The Skyscraper Core',       price: 280.00 },
-    's_cant':     { title: 'Cantilever Reinforcement',  price: 175.00 },
-    's_truss':    { title: 'Steel Truss Geometry',      price: 165.00 },
-    's_dam':      { title: 'Buttress Dam Section',      price: 240.00 },
-    's_isolator': { title: 'Seismic Isolator',          price: 295.00 },
+    // FIDGET SERIES (Signature)
+    'f_gyroscope_fidget': { title: 'Gyroscope Fidget', price: 20.00 },
+    'f_square_gyroscope': { title: 'Square Gyroscope Fidget', price: 20.00 },
+    'f_gyro_spinner': { title: 'Gyro Spinner', price: 20.00 },
+    'f_clicker_ring': { title: 'Clicker Ring', price: 15.00 },
+    'f_tangle_twister': { title: 'Tangle Twister', price: 18.00 },
+    'f_pop_puck': { title: 'Pop Puck', price: 22.00 },
+    'f_gear_cube': { title: 'Gear Cube', price: 35.00 },
+    'f_chain_link': { title: 'Chain Link Fidget', price: 12.00 },
 
-    // AEROSPACE SERIES (Signature)
-    'a_falcon':  { title: 'Falcon Trajectory',      price: 260.00 },
-    'a_naca':    { title: 'NACA 2412 Airfoil',      price: 185.00 },
-    'a_nozzle':  { title: 'Rocket Nozzle Bell',     price: 230.00 },
-    'a_inlet':   { title: 'SR-71 Inlet Spike',      price: 310.00 },
-    'a_heli':    { title: 'Helicopter Rotor Head',   price: 275.00 },
-    'a_station': { title: 'Space Station Module',    price: 350.00 },
-    'a_solar':   { title: 'Satellite Solar Array',   price: 210.00 },
-    'a_lander':  { title: 'Landing Hexapod',         price: 295.00 },
+    // TRAY SERIES (Signature)
+    't_hexagonal': { title: 'Hexagonal Catch-all Tray', price: 25.00 },
+    't_minimalist_valet': { title: 'Minimalist Valet Tray', price: 30.00 },
+    't_geometric_desk': { title: 'Geometric Desk Tray', price: 20.00 },
+    't_ripple_effect': { title: 'Ripple Effect Key Tray', price: 18.00 },
+    't_tiered_organizer': { title: 'Tiered Organizer Tray', price: 35.00 },
+    't_oval_vanity': { title: 'Oval Vanity Tray', price: 28.00 },
+    't_angular_display': { title: 'Angular Display Tray', price: 22.00 },
+    't_stackable_sorting': { title: 'Stackable Sorting Trays', price: 40.00 },
 
     // ESSENTIALS COLLECTION
     'e_corner_shelf': { title: 'Multi Tier Corner Shelf', price: 25.00 }

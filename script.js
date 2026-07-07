@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const path = window.location.pathname;
         if (path.includes('collection-vase.html')) {
             renderProducts('vase');
-        } else if (path.includes('collection-structural.html')) {
-            renderProducts('structural');
-        } else if (path.includes('collection-aerospace.html')) {
-            renderProducts('aerospace');
+        } else if (path.includes('collection-fidget.html')) {
+            renderProducts('fidget');
+        } else if (path.includes('collection-tray.html')) {
+            renderProducts('tray');
         } else if (path.includes('collections.html')) {
             renderProducts('signature');
         } else if (path.includes('essentials.html')) {
@@ -249,10 +249,10 @@ function renderProducts(filterMode = 'all') {
         filteredProducts = allProducts.filter(p => p.tier === 'signature');
     } else if (filterMode === 'vase') {
         filteredProducts = allProducts.filter(p => p.series === 'Vase');
-    } else if (filterMode === 'structural') {
-        filteredProducts = allProducts.filter(p => p.series === 'Structural');
-    } else if (filterMode === 'aerospace') {
-        filteredProducts = allProducts.filter(p => p.series === 'Aerospace');
+    } else if (filterMode === 'fidget') {
+        filteredProducts = allProducts.filter(p => p.series === 'Fidget');
+    } else if (filterMode === 'tray') {
+        filteredProducts = allProducts.filter(p => p.series === 'Tray');
     } else if (filterMode === 'essentials') {
         filteredProducts = allProducts.filter(p => p.tier === 'essentials');
     }
@@ -384,119 +384,121 @@ const productDatabase = {
         imageId: 'Modern Bowl'
     },
 
-    // STRUCTURAL SERIES (Signature)
-    's_bridge': {
-        title: 'Suspension Bridge Node',
-        price: '320.00',
-        desc: 'Analysis of main cable connection points and tension limits on a mega-structure bridge.',
-        series: 'Structural',
+    // FIDGET SERIES (Signature)
+    'f_gyroscope_fidget': {
+        title: 'Gyroscope Fidget',
+        price: '20.00',
+        desc: 'Find your focus and spin away stress with our mesmerizing 3D Printed Gyroscope Fidget Toy! Looking for the ultimate way to keep your hands busy and your mind engaged? Our concentric ring gyroscope is the perfect sensory accessory for your desk, pocket, or backpack. Engineered for smooth, continuous rotation, this nested gimbal design provides a deeply satisfying tactile experience that helps melt away stress, improve concentration, and channel restless energy. Credit @Endless_2682273 on Printables',
+        series: 'Fidget',
+        tier: 'signature',
+        imageId: 'Gyroscope Fidget'
+    },
+    'f_square_gyroscope': {
+        title: 'Square Gyroscope Fidget',
+        price: '20.00',
+        desc: 'Whether you\'re powering through a long workday, studying for exams, or simply love the feel of a great mechanical puzzle, this articulated toy is built to deliver. Each gyroscope is 3D printed with precision and care, ensuring a durable, lightweight design that moves seamlessly in your hands. Credit: @Endless_2682273 on Printables',
+        series: 'Fidget',
+        tier: 'signature',
+        imageId: 'Square Gyroscope Fidget'
+    },
+    'f_gyro_spinner': {
+        title: 'Gyro Spinner',
+        price: '20.00',
+        desc: 'Triple-axis spinning rings mimicking gyroscopic motion for endless fidgeting.',
+        series: 'Fidget',
         tier: 'signature'
     },
-    's_beam': {
-        title: 'I-Beam Stress Map',
-        price: '190.00',
-        desc: 'Load path visualization under maximum localized stress on a standard universal beam.',
-        series: 'Structural',
+    'f_clicker_ring': {
+        title: 'Clicker Ring',
+        price: '15.00',
+        desc: 'A discreet, wearable fidget ring with mechanical clicking feedback.',
+        series: 'Fidget',
         tier: 'signature'
     },
-    's_dome': {
-        title: 'Geodesic Dome Joint',
-        price: '210.00',
-        desc: "Vertex connection detail for spherical structures. Buckminster Fuller's vision in print.",
-        series: 'Structural',
+    'f_tangle_twister': {
+        title: 'Tangle Twister',
+        price: '18.00',
+        desc: 'A segmented, articulating chain that twists and bends fluidly in your hands.',
+        series: 'Fidget',
         tier: 'signature'
     },
-    's_sky': {
-        title: 'The Skyscraper Core',
-        price: '280.00',
-        desc: 'Cross-section of elevator shaft and wind bracing systems in a supertall building.',
-        series: 'Structural',
+    'f_pop_puck': {
+        title: 'Pop Puck',
+        price: '22.00',
+        desc: 'A magnetic puck game allowing tricks, flips, and satisfying snaps.',
+        series: 'Fidget',
         tier: 'signature'
     },
-    's_cant': {
-        title: 'Cantilever Reinforcement',
-        price: '175.00',
-        desc: 'Rebar placement layout for extended concrete spans. The hidden strength within.',
-        series: 'Structural',
+    'f_gear_cube': {
+        title: 'Gear Cube',
+        price: '35.00',
+        desc: 'Interlocking mechanical gears that turn seamlessly with a simple twist.',
+        series: 'Fidget',
         tier: 'signature'
     },
-    's_truss': {
-        title: 'Steel Truss Geometry',
-        price: '165.00',
-        desc: 'Warren truss triangulation efficiency study. Classic structural engineering.',
-        series: 'Structural',
-        tier: 'signature'
-    },
-    's_dam': {
-        title: 'Buttress Dam Section',
-        price: '240.00',
-        desc: 'Hydrostatic pressure resistance engineering for massive water containment.',
-        series: 'Structural',
-        tier: 'signature'
-    },
-    's_isolator': {
-        title: 'Seismic Isolator',
-        price: '295.00',
-        desc: 'Base isolation bearing for earthquake resistance. Engineering for safety and motion.',
-        series: 'Structural',
+    'f_chain_link': {
+        title: 'Chain Link Fidget',
+        price: '12.00',
+        desc: 'Heavy-duty bike chain links repurposed into an addictive, rolling fidget.',
+        series: 'Fidget',
         tier: 'signature'
     },
 
-    // AEROSPACE SERIES (Signature)
-    'a_falcon': {
-        title: 'Falcon Trajectory',
-        price: '260.00',
-        desc: 'Orbital insertion path mathematics and velocity charts for heavy lift vehicles.',
-        series: 'Aerospace',
+    // TRAY SERIES (Signature)
+    't_hexagonal': {
+        title: 'Hexagonal Catch-all Tray',
+        price: '25.00',
+        desc: 'Geometric and versatile, perfect for organizing keys, coins, or daily essentials.',
+        series: 'Tray',
         tier: 'signature'
     },
-    'a_naca': {
-        title: 'NACA 2412 Airfoil',
-        price: '185.00',
-        desc: 'Classic camber profiles emphasizing lift coefficients. The shape of flight.',
-        series: 'Aerospace',
+    't_minimalist_valet': {
+        title: 'Minimalist Valet Tray',
+        price: '30.00',
+        desc: 'Clean lines and a sleek profile make this tray an elegant addition to any entryway or nightstand.',
+        series: 'Tray',
         tier: 'signature'
     },
-    'a_nozzle': {
-        title: 'Rocket Nozzle Bell',
-        price: '230.00',
-        desc: 'De Laval nozzle expansion ratio blueprint. Optimizing thrust in vacuum.',
-        series: 'Aerospace',
+    't_geometric_desk': {
+        title: 'Geometric Desk Tray',
+        price: '20.00',
+        desc: 'Organize your workspace in style with this sharply angled desk accessory.',
+        series: 'Tray',
         tier: 'signature'
     },
-    'a_inlet': {
-        title: 'SR-71 Inlet Spike',
-        price: '310.00',
-        desc: 'Supersonic shockwave management geometry. Mastering air at Mach 3.',
-        series: 'Aerospace',
+    't_ripple_effect': {
+        title: 'Ripple Effect Key Tray',
+        price: '18.00',
+        desc: 'Featuring a unique undulating surface that catches the light and your pocket items.',
+        series: 'Tray',
         tier: 'signature'
     },
-    'a_heli': {
-        title: 'Helicopter Rotor Head',
-        price: '275.00',
-        desc: 'Cyclic and collective pitch mechanism details. Complexity in rotation.',
-        series: 'Aerospace',
+    't_tiered_organizer': {
+        title: 'Tiered Organizer Tray',
+        price: '35.00',
+        desc: 'Multiple levels of storage to keep your accessories separated and easily accessible.',
+        series: 'Tray',
         tier: 'signature'
     },
-    'a_station': {
-        title: 'Space Station Module',
-        price: '350.00',
-        desc: 'Pressure vessel and docking port schematic. Living in the void.',
-        series: 'Aerospace',
+    't_oval_vanity': {
+        title: 'Oval Vanity Tray',
+        price: '28.00',
+        desc: 'A soft, curved design perfect for displaying perfumes, jewelry, or skincare products.',
+        series: 'Tray',
         tier: 'signature'
     },
-    'a_solar': {
-        title: 'Satellite Solar Array',
-        price: '210.00',
-        desc: 'Deployment hinge and photovoltaic cell layout. Harvesting stellar energy.',
-        series: 'Aerospace',
+    't_angular_display': {
+        title: 'Angular Display Tray',
+        price: '22.00',
+        desc: 'Make a statement with this bold, faceted tray designed to showcase your favorite items.',
+        series: 'Tray',
         tier: 'signature'
     },
-    'a_lander': {
-        title: 'Landing Hexapod',
-        price: '295.00',
-        desc: 'Lunar lander shock absorption leg design. Touching down on alien worlds.',
-        series: 'Aerospace',
+    't_stackable_sorting': {
+        title: 'Stackable Sorting Trays',
+        price: '40.00',
+        desc: 'A modular set of trays that stack perfectly for customizable, space-saving organization.',
+        series: 'Tray',
         tier: 'signature'
     },
 
@@ -551,8 +553,8 @@ function initProductPage() {
     } else {
         mainImg.innerText = product.title; // Placeholder text
         if (product.series === 'Vase') mainImg.style.background = 'radial-gradient(circle, #E8D8C4, #DDD0BC)';
-        if (product.series === 'Structural') mainImg.style.background = 'radial-gradient(circle, #DDD0BC, #D4C4B0)';
-        if (product.series === 'Aerospace') mainImg.style.background = 'radial-gradient(circle, #D4C4B0, #C8B8A4)';
+        if (product.series === 'Fidget') mainImg.style.background = 'radial-gradient(circle, #DDD0BC, #D4C4B0)';
+        if (product.series === 'Tray') mainImg.style.background = 'radial-gradient(circle, #D4C4B0, #C8B8A4)';
         if (product.series === 'Essentials') mainImg.style.background = 'radial-gradient(circle, #E8D8C4, #DDD0BC)'; // Generic background for Essentials
     }
 
